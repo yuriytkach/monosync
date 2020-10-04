@@ -1,0 +1,31 @@
+{
+  "clientId": "XXX000YYY",
+  "name": "John Doe",
+  "webHookUrl": "http://webhook",
+  "accounts": [
+    {
+      "id": "accountId1",
+      "currencyCode": 978,
+      "cashbackType": "UAH",
+      "balance": 42000,
+      "creditLimit": 0,
+      "maskedPan": [
+        "537541******0001"
+      ],
+      "type": "black",
+      "iban": "UA00000000000000000000001"
+    },
+    {
+      "id": "accountId2",
+      "currencyCode": 980,
+      "cashbackType": "UAH",
+      "balance": 1234567,
+      "creditLimit": 0,
+      "maskedPan": [
+        "537541******0002"
+      ],
+      "type": "black",
+      "iban": "UA999999999999999999999991"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+app:
+  sleep-duration: 10s
+  max-retries: 5
+  currencies:
+    - 980/UAH
+    - 840/USD
+    - 978/EUR
+    - 756/CHF
+    - 348/HUF
+    - 826/GBP
+    - 8/ALL
+
+networks:
+  mono/mp-rest/url: https://api.monobank.ua
+
+quarkus:
+  banner:
+    path: banner.txt
+  log:
+    level: INFO
+    console:
+      enable: true
+      json: false
+      format: '%d{HH:mm:ss.SSS} %-5p (%-10t) [%c{2.}] %s%e%n'
+      color: true
+      darken: 1
+
+"%dev":
+  quarkus:
+    log:
+      min-level: TRACE
+      category:
+        "com.yuriytkach":
+          level: DEBUG
+
+"%test":
+  quarkus:
+    log:
+      min-level: TRACE
+      category:
+        "com.yuriytkach":
+          level: TRACE

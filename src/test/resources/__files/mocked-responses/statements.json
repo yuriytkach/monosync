@@ -1,0 +1,54 @@
+[
+  {
+    "id": "id4",
+    "time": 1601575450,
+    "description": "Refill 2",
+    "mcc": 4829,
+    "amount": 1000,
+    "operationAmount": 1000,
+    "currencyCode": 980,
+    "commissionRate": 0,
+    "cashbackAmount": 0,
+    "balance": 186000,
+    "hold": true
+  },
+  {
+    "id": "id3",
+    "time": 1601497803,
+    "description": "Spending 2",
+    "mcc": 5411,
+    "amount": -10000,
+    "operationAmount": -10000,
+    "currencyCode": 980,
+    "commissionRate": 0,
+    "cashbackAmount": 8466,
+    "balance": 185000,
+    "hold": false
+  },
+  {
+    "id": "id2",
+    "time": 1601317914,
+    "description": "Spending 1",
+    "mcc": 5499,
+    "amount": -5000,
+    "operationAmount": -5000,
+    "currencyCode": 980,
+    "commissionRate": 0,
+    "cashbackAmount": 499,
+    "balance": 195000,
+    "hold": false
+  },
+  {
+    "id": "id1",
+    "time": 1601290750,
+    "description": "Refill 1",
+    "mcc": 4829,
+    "amount": 100000,
+    "operationAmount": 100000,
+    "currencyCode": 980,
+    "commissionRate": 0,
+    "cashbackAmount": 0,
+    "balance": 200000,
+    "hold": false
+  }
+]
