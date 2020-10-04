@@ -1,0 +1,17 @@
+version: 2
+updates:
+- package-ecosystem: maven
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "01:00"
+  reviewers:
+  - yuriytkach
+  assignees:
+  - yuriytkach
+  labels:
+  - "autosquash"
+  - "dependencies"
+  commit-message:
+    prefix: "build(deps)"
+    prefix-development: "build(deps-dev)"
