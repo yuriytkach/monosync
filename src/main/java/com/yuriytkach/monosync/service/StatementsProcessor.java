@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -57,6 +58,7 @@ public class StatementsProcessor {
       .map(range -> monoService.loadStatements(token, account.getId(), range.getKey(), range.getValue()))
       .flatMap(Optional::stream)
       .flatMap(Collection::stream)
+      .sorted(Comparator.comparingLong(Statement::getTime))
       .collect(toList());
 
     log.info("Loaded {} statements for account {}", statements.size(), account.getId());
