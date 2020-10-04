@@ -41,7 +41,7 @@ public class StatementTest {
     "5000, 5000, 980, 980, 0, 2323, ' (cashback: 23.23)'",
     "5000, 5000, 980, 980, 4242, 0, ' (commission: 42.42)'",
     "5000, 5000, 980, 980, 0, 0, ''",
-    "5000, 123, 999, 980, 4242, 2323, ' (123 XXX @ 40.6504) (cashback: 23.23) (commission: 42.42)'",
+    "5000, 123, 999, 980, 4242, 2323, ' (1.23 XXX @ 40.6504) (cashback: 23.23) (commission: 42.42)'",
   })
   void shouldReturnPrintedDescription(
     final long amount,

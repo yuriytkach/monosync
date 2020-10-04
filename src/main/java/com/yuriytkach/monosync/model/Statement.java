@@ -74,8 +74,8 @@ public class Statement {
 
     if (defaultCurrency != currencyCode) {
       sb.append(format(
-        " (%d %s @ %s",
-        operationAmount,
+        " (%s %s @ %s",
+        DECIMAL_FORMAT.format((double) operationAmount / 100),
         currencyMapper.str(currencyCode),
         EXCHANGE_RATE_FORMAT.format((double) amount / (double) operationAmount)
       )).append(")");
