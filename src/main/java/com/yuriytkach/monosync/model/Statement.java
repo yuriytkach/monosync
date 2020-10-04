@@ -9,6 +9,7 @@ import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.time.Instant;
 import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 
 import com.yuriytkach.monosync.util.CurrencyMapper;
 
@@ -61,7 +62,7 @@ public class Statement {
   }
 
   public String getPrintedDate() {
-    return Instant.ofEpochSecond(time).atZone(ZoneOffset.UTC).toLocalDate().toString();
+    return Instant.ofEpochSecond(time).atZone(ZoneOffset.UTC).toLocalDate().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
   }
 
   public String getPrintedDescription(final CurrencyMapper currencyMapper, final int defaultCurrency) {

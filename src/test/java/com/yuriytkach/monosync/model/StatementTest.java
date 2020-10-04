@@ -17,8 +17,8 @@ public class StatementTest {
 
   @ParameterizedTest
   @CsvSource({
-    "1601575450, 2020-10-01",
-    "1600575450, 2020-09-20"
+    "1601575450, 2020/10/01",
+    "1600575450, 2020/09/20"
   })
   void shouldReturnPrintedDate(final long time, final String expectedDate) {
     final Statement statement = new Statement("id", time, null, 0, true, 0, 0, 0, 0, 0, 0);
