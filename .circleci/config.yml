@@ -7,4 +7,6 @@ workflows:
   maven_test:
     jobs:
       - maven/test:
-          executor: default
+          executor:
+            name: "default"
+            tag: "11.0"
