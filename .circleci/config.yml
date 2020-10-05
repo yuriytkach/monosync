@@ -3,6 +3,10 @@ version: 2.1
 orbs:
   maven: circleci/maven@0.0.12
 
+executors:
+  default:
+    tag: "11.0"
+
 workflows:
   maven_test:
     jobs:
