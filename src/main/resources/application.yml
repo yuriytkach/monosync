@@ -8,6 +8,7 @@ app:
     - 756/CHF
     - 348/HUF
     - 826/GBP
+    - 985/PLN
     - 8/ALL
 
 networks:
