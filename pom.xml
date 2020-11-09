@@ -21,7 +21,7 @@
     <quarkus.platform.version>1.9.2.Final</quarkus.platform.version>
     <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
     <build-helper-maven-plugin.version>3.2.0</build-helper-maven-plugin.version>
-    <testcontainers.version>1.14.3</testcontainers.version>
+    <testcontainers.version>1.15.0</testcontainers.version>
     <jacoco.version>0.8.6</jacoco.version>
     <poi.version>4.1.2</poi.version>
 
