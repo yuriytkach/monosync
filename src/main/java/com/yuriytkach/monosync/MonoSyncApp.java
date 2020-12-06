@@ -6,6 +6,8 @@ import java.time.LocalDate;
 
 import javax.inject.Inject;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.yuriytkach.monosync.service.MonoService;
 import com.yuriytkach.monosync.service.StatementsProcessor;
 
@@ -32,8 +34,11 @@ public class MonoSyncApp implements QuarkusApplication, Runnable {
   @CommandLine.Option(names = { "-t", "--token" }, description = "Monobank personal token", required = true)
   String token;
 
-  @CommandLine.Option(names = { "-d", "--days" }, description = "Days to sync", defaultValue = "30")
+  @CommandLine.Option(names = { "-d", "--days" }, description = "Days to sync (default 30)", defaultValue = "30")
   Integer daysToSync;
+
+  @CommandLine.Option(names = { "-n", "--iban" }, description = "IBAN of account to sync")
+  String iban;
 
   @Override
   public int run(final String... args) {
@@ -57,7 +62,9 @@ public class MonoSyncApp implements QuarkusApplication, Runnable {
       log.info("Load data for client id: {}", client.getClientId());
       log.trace("Client name: {}", client.getName());
 
-      client.getAccounts().forEach(account -> statementsProcessor.processStatementsForAccount(
+      client.getAccounts().stream()
+        .filter(acc -> StringUtils.isBlank(iban) || iban.equals(acc.getIban()))
+        .forEach(account -> statementsProcessor.processStatementsForAccount(
         account,
         token,
         start,

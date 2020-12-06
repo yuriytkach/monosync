@@ -43,6 +43,10 @@ public class StatementsProcessor {
     final LocalDate from,
     final LocalDate to
   ) {
+    final String balance = String.format("%.2f", (double)(account.getBalance() - account.getCreditLimit())/100);
+    final String credit = String.format("%.2f", (double)account.getCreditLimit()/100);
+    log.info("Account {} balance: {} (credit limit: {})", account.getIban(), balance, credit);
+
     final List<LocalDate> dates = Stream.concat(
       from.datesUntil(to, Period.ofDays(30)),
       Stream.of(to)
@@ -52,7 +56,7 @@ public class StatementsProcessor {
       .mapToObj(i -> {
         var start = dates.get(i);
         var end = i == dates.size() - 2 ? to : dates.get(i + 1).minus(1, DAYS);
-        log.debug("Load statements for account {} from {} to {}", account.getId(), start, end);
+        log.debug("Load statements for account {} from {} to {}", account.getIban(), start, end);
         return Map.entry(start, end);
       })
       .map(range -> monoService.loadStatements(token, account.getId(), range.getKey(), range.getValue()))
@@ -61,7 +65,7 @@ public class StatementsProcessor {
       .sorted(Comparator.comparingLong(Statement::getTime))
       .collect(toList());
 
-    log.info("Loaded {} statements for account {}", statements.size(), account.getId());
+    log.info("Account {} loaded statements: {}", account.getIban(), statements.size());
 
     if (statements.size() > 0) {
       final File file = new File("/tmp/statements-" + account.getIban() + ".xlsx");
