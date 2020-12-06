@@ -24,7 +24,7 @@ quarkus:
       json: false
       format: '%d{HH:mm:ss.SSS} %-5p (%-10t) [%c{2.}] %s%e%n'
       color: true
-      darken: 1
+      darken: 0
 
 "%dev":
   quarkus:
