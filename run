@@ -1,0 +1,2 @@
+#!/bin/sh
+java -Djava.util.logging.manager=org.jboss.logmanager.LogManager -jar target/monosync-*-runner.jar "$@"
