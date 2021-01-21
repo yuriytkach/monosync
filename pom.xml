@@ -17,7 +17,7 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <quarkus.platform.artifact-id>quarkus-universe-bom</quarkus.platform.artifact-id>
     <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
-    <quarkus.version>1.10.5.Final</quarkus.version>
+    <quarkus.version>1.11.0.Final</quarkus.version>
     <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
     <build-helper-maven-plugin.version>3.2.0</build-helper-maven-plugin.version>
     <testcontainers.version>1.15.1</testcontainers.version>
