@@ -1,4 +1,4 @@
 #!/bin/sh
-java -Djava.util.logging.manager=org.jboss.logmanager.LogManager \
-  -cp "target/quarkus-app/app/*:target/quarkus-app/lib/boot/*:target/quarkus-app/lib/main/*" \
+  java -Djava.util.logging.manager=org.jboss.logmanager.LogManager \
+  -cp "target/quarkus-app/app/*:target/quarkus-app/lib/boot/*:target/quarkus-app/lib/main/*:target/quarkus-app/quarkus/*" \
   -jar target/quarkus-app/quarkus-run.jar "$@"
