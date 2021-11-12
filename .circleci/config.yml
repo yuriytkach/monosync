@@ -19,4 +19,6 @@ workflows:
           executor: 
             name: maven/default
             tag: "11.0"
+  coverage:
+    jobs:
       - codacy-coverage-job
