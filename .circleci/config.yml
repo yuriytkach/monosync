@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   maven: circleci/maven@1.0.2
+  coverage-reporter: codacy/coverage-reporter@13.5.2
 
 workflows:
   maven_test:
@@ -10,3 +11,12 @@ workflows:
           executor: 
             name: maven/default
             tag: "11.0"
+      - codacy-coverage-report:
+          docker:
+            - image: 'circleci/openjdk:8-jdk'
+          steps:
+            - ./mvnw jacoco:report
+            - coverage-reporter/send_report:
+                coverage-reports: 'target/site/jacoco/jacoco.xml'
+                project-token: $CODACY_PROJECT_TOKEN
+                skip: true
