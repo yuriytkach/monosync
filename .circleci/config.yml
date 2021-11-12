@@ -11,6 +11,8 @@ workflows:
           executor: 
             name: maven/default
             tag: "11.0"
+  coverage:
+    jobs:
       - codacy-coverage-report:
           docker:
             - image: 'circleci/openjdk:8-jdk'
