@@ -10,7 +10,8 @@ jobs:
       - image: cimg/base:stable
     steps:
       - coverage-reporter/send_report:
-          skip: true 
+          skip: true
+          project-token: ${CODACY_PROJECT_TOKEN}
 
 workflows:
   maven_test:
