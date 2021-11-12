@@ -4,6 +4,17 @@ orbs:
   maven: circleci/maven@1.0.2
   coverage-reporter: codacy/coverage-reporter@13.5.2
 
+jobs:
+  codacy-coverage-job:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - attach_workspace:
+          at: ~/
+      - coverage-reporter/send_report:
+          project-token: ${CODACY_PROJECT_TOKEN}
+          coverage-reports: target/site/jacoco/jacoco.xml
+
 workflows:
   maven_test:
     jobs:
@@ -11,12 +22,11 @@ workflows:
           executor: 
             name: maven/default
             tag: "11.0"
-      - codacy-coverage-report:
-          docker:
-            - image: 'circleci/openjdk:8-jdk'
-          steps:
-            - ./mvnw jacoco:report
-            - coverage-reporter/send_report:
-                coverage-reports: 'target/site/jacoco/jacoco.xml'
-                project-token: $CODACY_PROJECT_TOKEN
-                skip: true
+          post-steps:
+            - persist_to_workspace:
+                root: ~/
+                paths:
+                  - project/target/site/jacoco/jacoco.xml
+      - codacy-coverage-job:
+          requires:
+            - maven/test
