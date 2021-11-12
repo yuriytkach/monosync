@@ -9,9 +9,11 @@ jobs:
     docker:
       - image: cimg/base:stable
     steps:
+      - run: ./mvnw jacoco:report
       - coverage-reporter/send_report:
           skip: true
           project-token: ${CODACY_PROJECT_TOKEN}
+          coverage-reports: target/site/jacoco/jacoco.xml
 
 workflows:
   maven_test:
