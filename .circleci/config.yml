@@ -12,12 +12,12 @@ jobs:
       - checkout
       - attach_workspace:
           at: ~/
-      - run: mkdir target; cp ~/target/jacoco.exec target/jacoco.exec
+      - run: mkdir -p project/target; cp ~/project/target/jacoco.exec project/target/jacoco.exec
       - run: ./mvnw jacoco:report
       - coverage-reporter/send_report:
           skip: true
           project-token: ${CODACY_PROJECT_TOKEN}
-          coverage-reports: target/site/jacoco/jacoco.xml
+          coverage-reports: project/target/site/jacoco/jacoco.xml
 
 workflows:
   maven_test:
@@ -30,7 +30,7 @@ workflows:
             - persist_to_workspace:
                 root: ~/
                 paths:
-                  - target/jacoco.exec
+                  - project/target/jacoco.exec
       - codacy-coverage-job:
           requires:
             - maven/test
