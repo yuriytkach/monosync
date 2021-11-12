@@ -11,8 +11,9 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: /tmp/dir
-      - run: mkdir target; cp /tmp/dir/target/jacoco.exec target/jacoco.exec
+          at: ~/
+      - run: mkdir target; cp ~/target/jacoco.exec target/jacoco.exec
+      - run: ./mvnw jacoco:report
       - coverage-reporter/send_report:
           skip: true
           project-token: ${CODACY_PROJECT_TOKEN}
@@ -27,7 +28,7 @@ workflows:
             tag: "11.0"
           post-steps:
             - persist_to_workspace:
-                root: /tmp/dir
+                root: ~/
                 paths:
                   - target/jacoco.exec
       - codacy-coverage-job:
