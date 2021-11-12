@@ -11,11 +11,11 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/
-      - run: ls -la; echo HHHH; ls -la ~/project/target/site/jacoco/jacoco.xml 
+      - run: ls -la; echo HHHH; ls -la target/site/jacoco/jacoco.xml 
       - coverage-reporter/send_report:
-          skip: true
+          skip: false
           project-token: ${CODACY_PROJECT_TOKEN}
-          coverage-reports: ~/project/target/site/jacoco/jacoco.xml
+          coverage-reports: target/site/jacoco/jacoco.xml
 
 workflows:
   maven_test:
