@@ -11,9 +11,7 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/
-      - run: ls -la; echo HHHH; ls -la target/site/jacoco/jacoco.xml 
       - coverage-reporter/send_report:
-          skip: false
           project-token: ${CODACY_PROJECT_TOKEN}
           coverage-reports: target/site/jacoco/jacoco.xml
 
