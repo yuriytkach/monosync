@@ -1,5 +1,7 @@
 # MonoSync
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/c36ff84d04734c02878d1bc25165b089)](https://www.codacy.com/gh/yuriytkach/monosync/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=yuriytkach/monosync&amp;utm_campaign=Badge_Grade) [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/c36ff84d04734c02878d1bc25165b089)](https://www.codacy.com/gh/yuriytkach/monosync/dashboard?utm_source=github.com&utm_medium=referral&utm_content=yuriytkach/monosync&utm_campaign=Badge_Coverage)
+
 Application to download bank statements from Monobank UA using its [API](https://api.monobank.ua).
 
 Before using the app login to https://api.monobank.ua and generate your token.
