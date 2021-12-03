@@ -10,7 +10,6 @@ updates:
   assignees:
   - yuriytkach
   labels:
-  - "autosquash"
   - "dependencies"
   commit-message:
     prefix: "build(deps)"
