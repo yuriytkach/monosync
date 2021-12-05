@@ -11,6 +11,7 @@ jobs:
   Auto:
     name: Auto-update
     runs-on: ubuntu-18.04
+    if: ${{ github.actor != 'dependabot[bot]' }}
     steps:
       - uses: tibdex/auto-update@v2
         with:
