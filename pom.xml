@@ -22,7 +22,7 @@
     <build-helper-maven-plugin.version>3.3.0</build-helper-maven-plugin.version>
     <testcontainers.version>1.17.3</testcontainers.version>
     <jacoco.version>0.8.8</jacoco.version>
-    <poi.version>5.2.2</poi.version>
+    <poi.version>5.2.3</poi.version>
 
     <skipTests>false</skipTests>
     <skipITs>${skipTests}</skipITs>
