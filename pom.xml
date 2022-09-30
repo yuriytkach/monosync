@@ -20,7 +20,7 @@
     <quarkus.platform.version>2.13.0.Final</quarkus.platform.version>
     <surefire-plugin.version>3.0.0-M7</surefire-plugin.version>
     <build-helper-maven-plugin.version>3.3.0</build-helper-maven-plugin.version>
-    <testcontainers.version>1.17.3</testcontainers.version>
+    <testcontainers.version>1.17.4</testcontainers.version>
     <jacoco.version>0.8.8</jacoco.version>
     <poi.version>5.2.3</poi.version>
 
