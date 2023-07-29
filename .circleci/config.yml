@@ -19,6 +19,8 @@ workflows:
   gradle_test:
     jobs:
       - gradle/test:
+          executor: 
+            tag: "17.0"
           test_command: test quarkusIntTest
           post-steps:
             - persist_to_workspace:
