@@ -9,8 +9,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.List;
 import java.util.Optional;
 
-import jakarta.inject.Inject;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullSource;
@@ -22,10 +20,11 @@ import com.yuriytkach.monosync.model.Statement;
 
 import io.quarkus.test.common.QuarkusTestResource;
 import io.quarkus.test.junit.QuarkusTest;
+import jakarta.inject.Inject;
 
 @QuarkusTest
 @QuarkusTestResource(WiremockMonoApi.class)
-public class MonoServiceIT {
+class MonoServiceIT {
 
   @Inject
   MonoService monoService;
@@ -35,8 +34,10 @@ public class MonoServiceIT {
     final Optional<Client> client = monoService.loadClientInfo(TEST_TOKEN);
 
     assertThat(client).hasValue(new Client("XXX000YYY", "John Doe", "http://webhook", List.of(
-      new Account("accountId1", 42000, 0, 978, "UAH", List.of("537541******0001"), "black", "UA00000000000000000000001"),
-      new Account("accountId2", 1234567, 0, 980, "UAH", List.of("537541******0002"), "black", "UA999999999999999999999991")
+      new Account("accountId1", 42000, 0, 978, "UAH",
+        List.of("537541******0001"), "black", "UA00000000000000000000001"),
+      new Account("accountId2", 1234567, 0, 980, "UAH",
+        List.of("537541******0002"), "black", "UA999999999999999999999991")
     )));
   }
 

@@ -13,9 +13,6 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
-import jakarta.ws.rs.WebApplicationException;
-import jakarta.ws.rs.core.Response;
-
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -29,8 +26,11 @@ import com.yuriytkach.monosync.api.MonoApi;
 import com.yuriytkach.monosync.model.ApiError;
 import com.yuriytkach.monosync.model.Client;
 
+import jakarta.ws.rs.WebApplicationException;
+import jakarta.ws.rs.core.Response;
+
 @ExtendWith(MockitoExtension.class)
-public class MonoServiceRetriesTest {
+class MonoServiceRetriesTest {
 
   @Mock
   MonoApi monoApi;

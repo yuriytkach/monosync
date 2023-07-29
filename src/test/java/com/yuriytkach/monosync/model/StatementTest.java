@@ -13,7 +13,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import com.yuriytkach.monosync.util.CurrencyMapper;
 
-public class StatementTest {
+class StatementTest {
 
   @ParameterizedTest
   @CsvSource({

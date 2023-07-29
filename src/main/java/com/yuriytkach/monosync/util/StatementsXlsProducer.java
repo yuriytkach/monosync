@@ -3,14 +3,13 @@ package com.yuriytkach.monosync.util;
 import java.time.LocalDate;
 import java.util.List;
 
-import jakarta.enterprise.context.Dependent;
-import jakarta.inject.Inject;
-
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.yuriytkach.monosync.model.Statement;
 
+import jakarta.enterprise.context.Dependent;
+import jakarta.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -25,8 +24,8 @@ public class StatementsXlsProducer {
     final XSSFSheet sheet = workbook.createSheet(LocalDate.now().toString());
 
     for (int i = 0; i < statements.size(); i++) {
-      var row = sheet.createRow(i);
-      var statement = statements.get(i);
+      final var row = sheet.createRow(i);
+      final var statement = statements.get(i);
 
       row.createCell(0).setCellValue(statement.getPrintedDate());
       row.createCell(1).setCellValue(statement.getPrintedDescription(currencyMapper, accountCurrency));

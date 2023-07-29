@@ -12,10 +12,13 @@ app:
     - 8/ALL
     - 208/DKK
 
-networks:
-  mono/mp-rest/url: https://api.monobank.ua
-
 quarkus:
+  quarkus:
+    rest-client:
+      mono:
+        url: https://api.monobank.ua
+        connect-timeout: 1000
+        read-timeout: 30000
   banner:
     path: banner.txt
   log:
@@ -23,7 +26,6 @@ quarkus:
     console:
       enable: true
       format: '%d{HH:mm:ss.SSS} %-5p (%-10t) [%c{2.}] %s%e%n'
-      color: true
       darken: 0
 
 "%dev":

@@ -119,26 +119,29 @@ public class LoggingFilter implements ContainerRequestFilter, ClientRequestFilte
   }
 
   private Set<Map.Entry<String, List<String>>> getSortedHeaders(final Set<Map.Entry<String, List<String>>> headers) {
-    final TreeSet<Map.Entry<String, List<String>>> sortedHeaders = new TreeSet<>(LoggingFilter.COMPARATOR);
+    final Set<Map.Entry<String, List<String>>> sortedHeaders = new TreeSet<>(LoggingFilter.COMPARATOR);
     sortedHeaders.addAll(headers);
     return sortedHeaders;
   }
 
-  private InputStream logInboundEntity(final StringBuilder b, InputStream stream, final Charset charset) throws
-    IOException {
-    if (!stream.markSupported()) {
-      stream = new BufferedInputStream(stream);
+  private InputStream logInboundEntity(final StringBuilder b, final InputStream stream, final Charset charset)
+    throws IOException {
+    final InputStream updatedStream;
+    if (stream.markSupported()) {
+      updatedStream = stream;
+    } else {
+      updatedStream = new BufferedInputStream(stream);
     }
-    stream.mark(this.maxEntitySize + 1);
+    updatedStream.mark(this.maxEntitySize + 1);
     final byte[] entity = new byte[this.maxEntitySize + 1];
-    final int entitySize = stream.read(entity);
+    final int entitySize = updatedStream.read(entity);
     b.append(new String(entity, 0, Math.min(entitySize, this.maxEntitySize), charset));
     if (entitySize > this.maxEntitySize) {
       b.append("...more...");
     }
     b.append('\n');
-    stream.reset();
-    return stream;
+    updatedStream.reset();
+    return updatedStream;
   }
 
   @Override

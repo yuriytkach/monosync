@@ -1,7 +1,6 @@
 package com.yuriytkach.monosync.service;
 
 import static java.time.temporal.ChronoUnit.DAYS;
-import static java.util.stream.Collectors.toList;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -16,26 +15,23 @@ import java.util.Optional;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import jakarta.enterprise.context.Dependent;
-import jakarta.inject.Inject;
-
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.yuriytkach.monosync.model.Account;
 import com.yuriytkach.monosync.model.Statement;
 import com.yuriytkach.monosync.util.StatementsXlsProducer;
 
+import jakarta.enterprise.context.Dependent;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Dependent
+@RequiredArgsConstructor
 public class StatementsProcessor {
 
-  @Inject
-  MonoService monoService;
-
-  @Inject
-  StatementsXlsProducer xlsProducer;
+  private final MonoService monoService;
+  private final StatementsXlsProducer xlsProducer;
 
   public void processStatementsForAccount(
     final Account account,
@@ -43,19 +39,19 @@ public class StatementsProcessor {
     final LocalDate from,
     final LocalDate to
   ) {
-    final String balance = String.format("%.2f", (double)(account.getBalance() - account.getCreditLimit())/100);
-    final String credit = String.format("%.2f", (double)account.getCreditLimit()/100);
+    final String balance = String.format("%.2f", (double) (account.getBalance() - account.getCreditLimit()) / 100);
+    final String credit = String.format("%.2f", (double) account.getCreditLimit() / 100);
     log.info("Account {} balance: {} (credit limit: {})", account.getIban(), balance, credit);
 
     final List<LocalDate> dates = Stream.concat(
       from.datesUntil(to, Period.ofDays(30)),
       Stream.of(to)
-    ).collect(toList());
+    ).toList();
 
     final List<Statement> statements = IntStream.range(0, dates.size() - 1)
       .mapToObj(i -> {
-        var start = dates.get(i);
-        var end = i == dates.size() - 2 ? to : dates.get(i + 1).minus(1, DAYS);
+        final var start = dates.get(i);
+        final var end = i == dates.size() - 2 ? to : dates.get(i + 1).minus(1, DAYS);
         log.debug("Load statements for account {} from {} to {}", account.getIban(), start, end);
         return Map.entry(start, end);
       })
@@ -63,7 +59,7 @@ public class StatementsProcessor {
       .flatMap(Optional::stream)
       .flatMap(Collection::stream)
       .sorted(Comparator.comparingLong(Statement::getTime))
-      .collect(toList());
+      .toList();
 
     log.info("Account {} loaded statements: {}", account.getIban(), statements.size());
 

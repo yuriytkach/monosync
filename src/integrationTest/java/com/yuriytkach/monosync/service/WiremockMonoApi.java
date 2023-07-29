@@ -67,7 +67,7 @@ public class WiremockMonoApi implements QuarkusTestResourceLifecycleManager {
         .withBodyFile("mocked-responses/forbidden.json")
       ));
 
-    return Collections.singletonMap("networks.mono/mp-rest/url", wireMockServer.baseUrl());
+    return Collections.singletonMap("quarkus.rest-client.mono.url", wireMockServer.baseUrl());
   }
 
   @Override

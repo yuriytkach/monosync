@@ -4,8 +4,6 @@ import static java.time.temporal.ChronoUnit.DAYS;
 
 import java.time.LocalDate;
 
-import jakarta.inject.Inject;
-
 import org.apache.commons.lang3.StringUtils;
 
 import com.yuriytkach.monosync.service.MonoService;
@@ -14,12 +12,14 @@ import com.yuriytkach.monosync.service.StatementsProcessor;
 import io.quarkus.runtime.Quarkus;
 import io.quarkus.runtime.QuarkusApplication;
 import io.quarkus.runtime.annotations.QuarkusMain;
+import jakarta.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 import picocli.CommandLine;
 
 @Slf4j
 @QuarkusMain
 @CommandLine.Command(name = "main", mixinStandardHelpOptions = true)
+@SuppressWarnings("VisibilityModifier")
 public class MonoSyncApp implements QuarkusApplication, Runnable {
 
   @Inject

@@ -17,7 +17,7 @@ import jakarta.ws.rs.core.MediaType;
 
 @Path("/personal")
 @Produces(MediaType.APPLICATION_JSON)
-@RegisterRestClient(configKey = "networks.mono")
+@RegisterRestClient(configKey = "mono")
 @RegisterProvider(LoggingFilter.class)
 public interface MonoApi {
 

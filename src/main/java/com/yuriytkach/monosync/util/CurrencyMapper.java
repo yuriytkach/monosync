@@ -3,14 +3,14 @@ package com.yuriytkach.monosync.util;
 import java.util.List;
 import java.util.Map;
 
-import jakarta.enterprise.context.Dependent;
-
-import jakarta.annotation.PostConstruct;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.enterprise.context.Dependent;
 import one.util.streamex.StreamEx;
 
 @Dependent
+@SuppressWarnings("VisibilityModifier")
 public class CurrencyMapper {
 
   @ConfigProperty(name = "app.currencies")
