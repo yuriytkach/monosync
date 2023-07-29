@@ -19,7 +19,7 @@ workflows:
   gradle_test:
     jobs:
       - gradle/test:
-          executor: 
+          executor:
             name: gradle/default
             tag: "17.0"
           test_command: test quarkusIntTest
@@ -27,7 +27,7 @@ workflows:
             - persist_to_workspace:
                 root: ~/
                 paths:
-                  - project/reports/jacoco/jacocoTestReport.xml
+                  - project/build/reports/jacoco/jacocoTestReport.xml
       - codacy-coverage-job:
           requires:
             - gradle/test
