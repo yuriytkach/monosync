@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  maven: circleci/gradle@3.0.0
+  gradle: circleci/gradle@3.0.0
   coverage-reporter: codacy/coverage-reporter@13.5.2
 
 jobs:
