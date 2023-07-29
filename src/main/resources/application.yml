@@ -31,6 +31,8 @@ quarkus:
   quarkus:
     log:
       min-level: TRACE
+      console:
+        darken: 1
       category:
         "com.yuriytkach":
           level: DEBUG
