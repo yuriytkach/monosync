@@ -27,7 +27,7 @@ workflows:
             - persist_to_workspace:
                 root: ~/
                 paths:
-                  - project/build/reports/jacoco/jacocoTestReport.xml
+                  - project/build/reports/jacoco/test/jacocoTestReport.xml
       - codacy-coverage-job:
           requires:
             - gradle/test
