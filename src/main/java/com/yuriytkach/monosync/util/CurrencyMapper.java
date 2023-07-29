@@ -6,10 +6,10 @@ import java.util.Map;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import jakarta.annotation.PostConstruct;
-import jakarta.enterprise.context.Dependent;
+import jakarta.enterprise.context.ApplicationScoped;
 import one.util.streamex.StreamEx;
 
-@Dependent
+@ApplicationScoped
 @SuppressWarnings("VisibilityModifier")
 public class CurrencyMapper {
 

@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
 
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.WebApplicationException;
@@ -24,7 +25,7 @@ import com.yuriytkach.monosync.model.Statement;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Dependent
+@ApplicationScoped
 @SuppressWarnings("VisibilityModifier")
 public class MonoService {
 

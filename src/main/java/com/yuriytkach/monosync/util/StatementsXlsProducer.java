@@ -8,16 +8,16 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.yuriytkach.monosync.model.Statement;
 
-import jakarta.enterprise.context.Dependent;
-import jakarta.inject.Inject;
+import jakarta.enterprise.context.ApplicationScoped;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Dependent
+@ApplicationScoped
+@RequiredArgsConstructor
 public class StatementsXlsProducer {
 
-  @Inject
-  CurrencyMapper currencyMapper;
+  private final CurrencyMapper currencyMapper;
 
   public XSSFWorkbook produceReport(final List<Statement> statements, final int accountCurrency) {
     final XSSFWorkbook workbook = new XSSFWorkbook();

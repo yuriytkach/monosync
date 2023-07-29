@@ -21,12 +21,12 @@ import com.yuriytkach.monosync.model.Account;
 import com.yuriytkach.monosync.model.Statement;
 import com.yuriytkach.monosync.util.StatementsXlsProducer;
 
-import jakarta.enterprise.context.Dependent;
+import jakarta.enterprise.context.ApplicationScoped;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Dependent
+@ApplicationScoped
 @RequiredArgsConstructor
 public class StatementsProcessor {
 
