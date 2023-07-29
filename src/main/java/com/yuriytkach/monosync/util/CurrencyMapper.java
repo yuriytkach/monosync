@@ -3,9 +3,9 @@ package com.yuriytkach.monosync.util;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.Dependent;
+import jakarta.enterprise.context.Dependent;
 
+import jakarta.annotation.PostConstruct;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import one.util.streamex.StreamEx;

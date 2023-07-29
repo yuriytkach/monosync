@@ -7,10 +7,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
 
-import javax.enterprise.context.Dependent;
-import javax.inject.Inject;
-import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.core.Response;
+import jakarta.enterprise.context.Dependent;
+import jakarta.inject.Inject;
+import jakarta.ws.rs.WebApplicationException;
+import jakarta.ws.rs.core.Response;
 
 import org.apache.commons.math3.util.CombinatoricsUtils;
 import org.eclipse.microprofile.config.inject.ConfigProperty;

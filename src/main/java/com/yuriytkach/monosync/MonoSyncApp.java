@@ -4,7 +4,7 @@ import static java.time.temporal.ChronoUnit.DAYS;
 
 import java.time.LocalDate;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
 
