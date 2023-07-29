@@ -1,4 +1,6 @@
-src/test/resources/wallets/*.wallet
+# Gradle
+.gradle/
+build/
 
 # Eclipse
 .project
@@ -30,9 +32,9 @@ nb-configuration.xml
 *.orig
 *.rej
 
-# Gradle
-.gradle/
-build/
-
 # Maven
 target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+release.properties

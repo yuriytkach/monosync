@@ -22,7 +22,6 @@ quarkus:
     level: INFO
     console:
       enable: true
-      json: false
       format: '%d{HH:mm:ss.SSS} %-5p (%-10t) [%c{2.}] %s%e%n'
       color: true
       darken: 0
@@ -41,6 +40,8 @@ quarkus:
   quarkus:
     log:
       min-level: TRACE
+      console:
+        darken: 1
       category:
         "com.yuriytkach":
           level: TRACE

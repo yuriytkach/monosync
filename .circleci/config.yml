@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  maven: circleci/maven@1.0.2
+  maven: circleci/gradle@3.0.0
   coverage-reporter: codacy/coverage-reporter@13.5.2
 
 jobs:
@@ -13,20 +13,18 @@ jobs:
           at: ~/
       - coverage-reporter/send_report:
           project-token: ${CODACY_PROJECT_TOKEN}
-          coverage-reports: target/site/jacoco/jacoco.xml
+          coverage-reports: build/reports/jacoco/jacocoTestReport.xml
 
 workflows:
-  maven_test:
+  gradle_test:
     jobs:
-      - maven/test:
-          executor: 
-            name: maven/default
-            tag: "11.0"
+      - gradle/test:
+          test_command: test quarkusIntTest
           post-steps:
             - persist_to_workspace:
                 root: ~/
                 paths:
-                  - project/target/site/jacoco/jacoco.xml
+                  - project/reports/jacoco/jacocoTestReport.xml
       - codacy-coverage-job:
           requires:
-            - maven/test
+            - gradle/test
