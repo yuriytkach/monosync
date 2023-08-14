@@ -2,7 +2,7 @@ plugins {
     id 'java'
     id 'io.quarkus'
     id 'jacoco'
-    id 'io.freefair.lombok' version '8.2.1'
+    id 'io.freefair.lombok' version '8.2.2'
 }
 
 group 'com.yuriytkach'
