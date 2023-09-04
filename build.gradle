@@ -28,7 +28,7 @@ dependencies {
     implementation 'io.quarkus:quarkus-rest-client-jackson'
     implementation 'io.quarkus:quarkus-picocli'
 
-    implementation 'one.util:streamex:0.8.1'
+    implementation 'one.util:streamex:0.8.2'
     implementation 'org.apache.commons:commons-lang3:3.13.0'
 
     implementation "org.apache.poi:poi:${versions.poi}"
