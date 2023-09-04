@@ -13,12 +13,11 @@ app:
     - 208/DKK
 
 quarkus:
-  quarkus:
-    rest-client:
-      mono:
-        url: https://api.monobank.ua
-        connect-timeout: 1000
-        read-timeout: 30000
+  rest-client:
+    mono:
+      url: https://api.monobank.ua
+      connect-timeout: 1000
+      read-timeout: 30000
   banner:
     path: banner.txt
   log:
