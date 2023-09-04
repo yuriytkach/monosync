@@ -46,7 +46,7 @@ dependencies {
 
     integrationTestImplementation sourceSets.test.output
     integrationTestImplementation "org.awaitility:awaitility:4.2.0"
-    integrationTestImplementation 'com.github.tomakehurst:wiremock-jre8:2.35.0'
+    integrationTestImplementation 'com.github.tomakehurst:wiremock-jre8:3.0.1'
 }
 
 configurations {
