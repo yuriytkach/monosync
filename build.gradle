@@ -16,7 +16,7 @@ repositories {
 ext {
     versions = [
             poi    : '5.2.4',
-            mockito: '5.7.0',
+            mockito: '5.8.0',
     ]
 }
 
