@@ -42,7 +42,7 @@ dependencies {
     }
     testImplementation "org.mockito:mockito-core:${versions.mockito}"
     testImplementation "org.mockito:mockito-junit-jupiter:${versions.mockito}"
-    testImplementation "org.assertj:assertj-core:3.25.0"
+    testImplementation "org.assertj:assertj-core:3.25.1"
 
     integrationTestImplementation sourceSets.test.output
     integrationTestImplementation "org.awaitility:awaitility:4.2.0"
