@@ -45,7 +45,7 @@ dependencies {
     testImplementation "org.assertj:assertj-core:3.25.3"
 
     integrationTestImplementation sourceSets.test.output
-    integrationTestImplementation "org.awaitility:awaitility:4.2.0"
+    integrationTestImplementation "org.awaitility:awaitility:4.2.1"
     integrationTestImplementation 'com.github.tomakehurst:wiremock-jre8:3.0.1'
 }
 
