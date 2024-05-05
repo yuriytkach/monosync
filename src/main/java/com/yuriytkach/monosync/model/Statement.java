@@ -11,6 +11,8 @@ import java.time.Instant;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.yuriytkach.monosync.util.CurrencyMapper;
 
 import lombok.Data;
@@ -28,7 +30,11 @@ import lombok.Data;
  *     "currencyCode": 980,
  *     "commissionRate": 0,
  *     "cashbackAmount": 19000,
- *     "balance": 10050000
+ *     "balance": 10050000,
+ *     "comment": "За каву",
+ *     "counterEdrpou": "3096889974",
+ *     "counterIban": "UA898999980000355639201001404",
+ *     "counterName": "ТОВАРИСТВО З ОБМЕЖЕНОЮ ВІДПОВІДАЛЬНІСТЮ «ВОРОНА»"
  *   }
  * </pre>
  */
@@ -56,6 +62,10 @@ public class Statement {
   private final long commissionRate;
   private final long cashbackAmount;
   private final long balance;
+  private final String comment;
+  private final String counterEdrpou;
+  private final String counterIban;
+  private final String counterName;
 
   public String getPrintedAmount() {
     return DECIMAL_FORMAT.format((double) amount / 100);
@@ -87,6 +97,17 @@ public class Statement {
 
     if (commissionRate > 0) {
       sb.append(" (commission: ").append(DECIMAL_FORMAT.format((double) commissionRate / 100)).append(")");
+    }
+
+    if (StringUtils.isNotBlank(comment)) {
+      sb.append(" - ").append(comment);
+    }
+
+    if (StringUtils.isNotBlank(counterName)) {
+      sb.append(" [")
+        .append(counterName).append(", ")
+        .append(counterIban).append(", ")
+        .append(counterEdrpou).append("]");
     }
 
     return sb.toString();

@@ -21,7 +21,7 @@ class StatementTest {
     "1600575450, 2020/09/20"
   })
   void shouldReturnPrintedDate(final long time, final String expectedDate) {
-    final Statement statement = new Statement("id", time, null, 0, true, 0, 0, 0, 0, 0, 0);
+    final Statement statement = new Statement("id", time, null, 0, true, 0, 0, 0, 0, 0, 0, "", "", "", "");
     assertThat(statement.getPrintedDate()).isEqualTo(expectedDate);
   }
 
@@ -31,17 +31,17 @@ class StatementTest {
     "-1234567, -12345.67"
   })
   void shouldReturnPrintedAmount(final long amount, final String expectedAmount) {
-    final Statement statement = new Statement("id", 0, null, 0, true, amount, 0, 0, 0, 0, 0);
+    final Statement statement = new Statement("id", 0, null, 0, true, amount, 0, 0, 0, 0, 0, "", "", "", "");
     assertThat(statement.getPrintedAmount()).isEqualTo(expectedAmount);
   }
 
   @ParameterizedTest
   @CsvSource({
-    "5000, 5000, 980, 980, 4242, 2323, ' (cashback: 23.23) (commission: 42.42)'",
-    "5000, 5000, 980, 980, 0, 2323, ' (cashback: 23.23)'",
-    "5000, 5000, 980, 980, 4242, 0, ' (commission: 42.42)'",
-    "5000, 5000, 980, 980, 0, 0, ''",
-    "5000, 123, 999, 980, 4242, 2323, ' (1.23 XXX @ 40.6504) (cashback: 23.23) (commission: 42.42)'",
+    "5000, 5000, 980, 980, 4242, 2323, , ,' (cashback: 23.23) (commission: 42.42)'",
+    "5000, 5000, 980, 980, 0, 2323, , ,' (cashback: 23.23)'",
+    "5000, 5000, 980, 980, 4242, 0, comment, counter,' (commission: 42.42) - comment [counter, Iban, 12345678]'",
+    "5000, 5000, 980, 980, 0, 0, , ,''",
+    "5000, 123, 999, 980, 4242, 2323, , , ' (1.23 XXX @ 40.6504) (cashback: 23.23) (commission: 42.42)'",
   })
   void shouldReturnPrintedDescription(
     final long amount,
@@ -50,6 +50,8 @@ class StatementTest {
     final int accountCurrency,
     final long commissionRate,
     final long cashbackAmount,
+    final String comment,
+    final String counterName,
     final String expectedPrefix
   ) {
     var currencyMapper = mock(CurrencyMapper.class);
@@ -68,7 +70,11 @@ class StatementTest {
       currencyCode,
       commissionRate,
       cashbackAmount,
-      0
+      0,
+      comment,
+      counterName == null ? null : "12345678",
+      counterName == null ? null : "Iban",
+      counterName
     );
 
     assertThat(statement.getPrintedDescription(currencyMapper, accountCurrency))

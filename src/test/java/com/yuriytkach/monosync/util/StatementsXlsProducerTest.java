@@ -40,7 +40,11 @@ class StatementsXlsProducerTest {
       980,
       0,
       19000,
-      10050000
+      10050000,
+      "За каву",
+      "3096889974",
+      "UA898999980000355639201001404",
+      "ТОВАРИСТВО З ОБМЕЖЕНОЮ ВІДПОВІДАЛЬНІСТЮ «ВОРОНА»"
     );
 
     try (XSSFWorkbook workbook = tested.produceReport(List.of(statement), 980)) {
