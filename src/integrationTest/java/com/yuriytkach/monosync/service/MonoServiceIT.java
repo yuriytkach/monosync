@@ -51,15 +51,14 @@ class MonoServiceIT {
 
   @Test
   void shouldReturnStatementsForValidTokenAccountAndDates() {
-    final Optional<List<Statement>> statements = monoService
+    final List<Statement> statements = monoService
       .loadStatements(TEST_TOKEN, TEST_ACCOUNT, TEST_FROM, TEST_TO);
 
-    assertThat(statements).isPresent();
-    assertThat(statements.get()).containsExactlyInAnyOrder(
-      new Statement("id4", 1601575450, "Refill 2", 4829, true, 1000, 1000, 980, 0, 0, 186000),
-      new Statement("id3", 1601497803, "Spending 2", 5411, false, -10000, -10000, 980, 0, 8466, 185000),
-      new Statement("id2", 1601317914, "Spending 1", 5499, false, -5000, -5000, 980, 0, 499, 195000),
-      new Statement("id1", 1601290750, "Refill 1", 4829, false, 100000, 100000, 980, 0, 0, 200000)
+    assertThat(statements).containsExactlyInAnyOrder(
+      new Statement("id4", 1601575450, "Refill 2", 4829, true, 1000, 1000, 980, 0, 0, 186000, "", "", "", ""),
+      new Statement("id3", 1601497803, "Spending 2", 5411, false, -10000, -10000, 980, 0, 8466, 185000, "", "", "", ""),
+      new Statement("id2", 1601317914, "Spending 1", 5499, false, -5000, -5000, 980, 0, 499, 195000, "", "", "", ""),
+      new Statement("id1", 1601290750, "Refill 1", 4829, false, 100000, 100000, 980, 0, 0, 200000, "", "", "", "")
     );
   }
 
@@ -67,10 +66,10 @@ class MonoServiceIT {
   @ValueSource(strings = WiremockMonoApi.BAD_TOKEN)
   @NullSource
   void shouldReturnEmptyStatementsForInvalidToken(final String badToken) {
-    final Optional<List<Statement>> statements = monoService
+    final List<Statement> statements = monoService
       .loadStatements(badToken, TEST_ACCOUNT, TEST_FROM, TEST_TO);
 
-    assertThat(statements).isNotPresent();
+    assertThat(statements).isEmpty();
   }
 
 }

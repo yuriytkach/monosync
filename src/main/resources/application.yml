@@ -1,6 +1,4 @@
 app:
-  sleep-duration: 10s
-  max-retries: 5
   currencies:
     - 980/UAH
     - 840/USD

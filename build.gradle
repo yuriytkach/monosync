@@ -27,6 +27,7 @@ dependencies {
     implementation 'io.quarkus:quarkus-rest-client'
     implementation 'io.quarkus:quarkus-rest-client-jackson'
     implementation 'io.quarkus:quarkus-picocli'
+    implementation 'io.quarkus:quarkus-smallrye-fault-tolerance'
 
     implementation 'one.util:streamex:0.8.3'
     implementation 'org.apache.commons:commons-lang3:3.17.0'
@@ -58,8 +59,8 @@ configurations {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
 
 compileJava {

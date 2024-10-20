@@ -11,7 +11,6 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -56,14 +55,13 @@ public class StatementsProcessor {
         return Map.entry(start, end);
       })
       .map(range -> monoService.loadStatements(token, account.getId(), range.getKey(), range.getValue()))
-      .flatMap(Optional::stream)
       .flatMap(Collection::stream)
       .sorted(Comparator.comparingLong(Statement::getTime))
       .toList();
 
     log.info("Account {} loaded statements: {}", account.getIban(), statements.size());
 
-    if (statements.size() > 0) {
+    if (!statements.isEmpty()) {
       final File file = new File("/tmp/statements-" + account.getIban() + ".xlsx");
       if (file.exists() && !file.delete()) {
         log.warn("Failed to delete file: {}", file.getAbsolutePath());
