@@ -4,7 +4,7 @@
 
 Application to download bank statements from Monobank UA using its [API](https://api.monobank.ua).
 
-Before using the app login to https://api.monobank.ua and generate your token.
+Before using the app login to https://api.monobank.ua and generate your token!
 
 ## Running the application in dev mode
 
